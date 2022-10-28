@@ -1,31 +1,26 @@
-function randomNumber(min, max) {
-	if (min < 0 || max < 0) {
-		return NaN;
-	} else if (min >= max) {
+function getRandomNumber(min, max) {
+	if (min < 0 || max < 0 || min >= max) {
 		return NaN;
 	}
 
-	min = Math.ceil(min);
-	max = Math.floor(max);
+	const finMin = Math.ceil(min);
+	const finMax = Math.floor(max);
 
-	return Math.floor(Math.random() * (max - min + 1)) + min;
+	return Math.floor(Math.random() * (finMax - finMin + 1)) + finMin;
 }
 
-randomNumber(10, 20);
+getRandomNumber(10, 100);
 
-
-function randomNumberPoint(min, max, point) {
-  if (min < 0 || max < 0) {
+function getRandomNumberPoint(min, max, point = 0) {
+	if (min < 0 || max < 0 || min >= max) {
 		return NaN;
-	} else if (min >= max) {
-		return NaN;
-  }
+	}
 
-  min = Math.ceil(min);
-  max = Math.floor(max);
+	const finMin = Math.ceil(min);
+	const finMax = Math.floor(max);
 
-  let int = Math.random() * (max - min + 1) + min;
-  return Number(int.toFixed(point));
+	let int = Math.random() * (finMax - finMin + 1) + finMin;
+	return Number(int.toFixed(point));
 }
 
-console.log(randomNumberPoint(10, 20, 3));
+getRandomNumberPoint(10, 10, 10);
