@@ -3,8 +3,8 @@ function getRandomNumber(min, max) {
 		return NaN;
 	}
 
-	const finMin = Math.ceil(min);
-	const finMax = Math.floor(max);
+	const finMin = Math.ceil(Math.min(min, max));
+	const finMax = Math.floor(Math.max(min, max));
 
 	return Math.floor(Math.random() * (finMax - finMin + 1)) + finMin;
 }
@@ -16,8 +16,8 @@ function getRandomNumberPoint(min, max, point = 0) {
 		return NaN;
 	}
 
-	const finMin = Math.ceil(min);
-	const finMax = Math.floor(max);
+	const finMin = Math.ceil(Math.min(min, max));
+	const finMax = Math.floor(Math.max(min,max));
 
 	let int = Math.random() * (finMax - finMin + 1) + finMin;
 	return Number(int.toFixed(point));
