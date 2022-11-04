@@ -1,3 +1,5 @@
-import './data.js';
+import { generateAdverts } from './data.js';
+
+console.log(generateAdverts());
 
 

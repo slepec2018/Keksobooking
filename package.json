@@ -20,7 +20,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "start": "browser-sync start --server \"build/\" --no-ui --files \"build/js**/*.js\"",
+    "start": "browser-sync start --config \"bs-config.js\"",
     "test": "eslint build/js/",
     "build": "webpack --mode production"
   },

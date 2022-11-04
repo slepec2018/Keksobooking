@@ -58,13 +58,15 @@ const getRandomArrayPart = (arr) => {
 	return arr.slice(lower, upper);
 };
 
-const generateWords = (length) => {
-	return ([...Array(length)].map((_, i) => getRandomWord(i === 0)).join(' ').trim() + '.');
+const capitalize = (string) => string.charAt(0).toUpperCase() + string.slice(1);
+
+const getRandomWord = () => {
+	const word = getRandomItemArr(WORDS);
+	return word;
 };
 
-const getRandomWord = (firstLetterToUppercase) => {
-	const word = WORDS[getRandomNumber(0, WORDS.length - 1)];
-	return firstLetterToUppercase ? word.charAt(0).toUpperCase() + word.slice(1) : word;
+const generateWords = (length) => {
+	return capitalize([...Array(length)].map(getRandomWord).join(' ') + '.');
 };
 
 const getNumberWithLeadZero = (number) => number < 10 ? `0${number}` : number;
