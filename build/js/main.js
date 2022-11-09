@@ -1,5 +1,9 @@
-import { generateAdverts } from './data.js';
+import {generatedAdverts} from './data.js';
+import { fillSimilarCards } from './similar_items.js';
 
-console.log(generateAdverts());
+const pointSimilarCards = document.querySelector('.map__canvas');
+
+pointSimilarCards.append(fillSimilarCards(generatedAdverts()));
+
 
 

@@ -4,7 +4,7 @@ import {
 	getRandomItemArr,
 	getRandomArrayPart,
 	generateWords,
-	getNumberWithLeadZero,
+	getNumberWithLeadZero
 } from './util.js';
 
 const TITLES = [
@@ -79,4 +79,6 @@ const getAdvert = (index) => {
 	};
 };
 
-export const generateAdverts = (length = OFFERS_COUNT) => Array.from({ length }, (_el, i) => getAdvert(i + 1));
+const generatedAdverts = (length = OFFERS_COUNT) => Array.from({ length }, (_el, i) => getAdvert(i + 1));
+
+export {generatedAdverts}

@@ -50,7 +50,11 @@ const getRandomItemArr = (arr) => {
 
 const getRandomArrayPart = (arr) => {
 	const a = getRandomNumber(0, arr.length - 1);
-	const b = getRandomNumber(0, arr.length - 1);
+	let b = getRandomNumber(0, arr.length - 1);
+
+	while (b === 0 || b === a) {
+		b = getRandomNumber(0, arr.length - 1);
+	}
 
 	const lower = Math.min(a, b);
 	const upper = Math.max(a, b);

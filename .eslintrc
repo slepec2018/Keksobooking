@@ -23,11 +23,3 @@ rules:
   indent:
     - error
     - tab
-  comma-dangle:
-    - error
-    -
-      arrays: "always-multiline"
-      objects: "always-multiline"
-      imports: "always-multiline"
-      exports: "never"
-      functions: "never"
