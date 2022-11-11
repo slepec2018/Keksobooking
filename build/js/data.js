@@ -19,7 +19,6 @@ const TITLES = [
 	'Аренда 2к квартиры, пер. Лабораторный, ЖК Alter Ego, Печерск',
 	'Сдам 1к Подольский р-н Виноградарь ул Свободы пр-т',
 ];
-const OFFER_TYPES = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
 const OFFER_CHECKS = ['12:00', '13:00', '14:00'];
 const OFFER_FEATURES = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
 const OFFER_PHOTOS = [
@@ -51,6 +50,29 @@ const GuestsRange = {
 	MAX: 20,
 };
 
+const offerType = {
+	palace: {
+		title: 'Дворец',
+		min: 10000,
+	},
+	flat: {
+		title: 'Квартира',
+		min: 1000,
+	},
+	house: {
+		title: 'Дом',
+		min: 5000,
+	},
+	bungalow: {
+		title: 'Бунгало',
+		min: 0,
+	},
+	hotel: {
+		title: 'Отель',
+		min: 3000,
+	},
+};
+
 const getAdvert = (index) => {
 	const lat = getRandomNumberPoint(LatRange.MIN, LatRange.MAX, POINT_DECIMALS);
 	const lng = getRandomNumberPoint(LngRange.MIN, LngRange.MAX, POINT_DECIMALS);
@@ -63,7 +85,7 @@ const getAdvert = (index) => {
 			title: getRandomItemArr(TITLES),
 			address: `${lat}, ${lng}`,
 			price: getRandomNumber(PriceRange.MIN, PriceRange.MAX),
-			type: getRandomItemArr(OFFER_TYPES),
+			type: getRandomItemArr(Object.keys(offerType)),
 			rooms: getRandomNumber(RoomsRange.MIN, RoomsRange.MAX),
 			guests: getRandomNumber(GuestsRange.MIN, GuestsRange.MAX),
 			checkin: getRandomItemArr(OFFER_CHECKS),
@@ -81,4 +103,4 @@ const getAdvert = (index) => {
 
 const generatedAdverts = (length = OFFERS_COUNT) => Array.from({ length }, (_el, i) => getAdvert(i + 1));
 
-export {generatedAdverts}
+export { generatedAdverts, offerType };

@@ -1,6 +1,6 @@
-const templateSimilarCards = document.querySelector('#card').content.querySelector('.popup');
+import { offerType } from './data.js';
 
-console.log(templateSimilarCards);
+const templateSimilarCards = document.querySelector('#card').content.querySelector('.popup');
 
 const fillSimilarCards = (generatedData) => {
 	let fragment = new DocumentFragment();
@@ -10,65 +10,20 @@ const fillSimilarCards = (generatedData) => {
 		let clone = templateSimilarCards.cloneNode(true);
 		let popupPhotos = [];
 		let popupFeatures = [];
-		let typeClone = '';
+
+		let typeClone = offerType[type].title;
 
 		clone.querySelector('.popup__title').textContent = title;
 		clone.querySelector('.popup__text--address').textContent = address;
 		clone.querySelector('.popup__text--price').textContent = `${price} ₽/ночь`;
 
-		switch (type) {
-		case 'flat':
-			typeClone = 'Квартира';
-			break;
-		case 'bungalow':
-			typeClone = 'Бунгало';
-			break;
-		case 'house':
-			typeClone = 'Дом';
-			break;
-		case 'palace':
-			typeClone = 'Дворец';
-			break;
-		case 'hotel':
-			typeClone = 'Отель';
-			break;
-		default:
-			console.log('Ошибка по виду типа');
-		}
 		clone.querySelector('.popup__type').textContent = typeClone;
 
-		clone.querySelector(
-			'.popup__text--capacity'
-		).textContent = `${rooms} комнаты для ${guests} гостей.`;
-		clone.querySelector(
-			'.popup__text--time'
-		).textContent = `Заезд после ${checkin}, выезд до ${checkout}.`;
+		clone.querySelector('.popup__text--capacity').textContent = `${rooms} комнаты для ${guests} гостей.`;
+		clone.querySelector('.popup__text--time').textContent = `Заезд после ${checkin}, выезд до ${checkout}.`;
 
 		for (let i = 0; i < features.length; i++) {
-			let guide = '';
-
-			switch (features[i]) {
-			case 'wifi':
-				guide = '<li class="popup__feature popup__feature--wifi"></li>';
-				break;
-			case 'dishwasher':
-				guide = '<li class="popup__feature popup__feature--dishwasher"></li>';
-				break;
-			case 'parking':
-				guide = '<li class="popup__feature popup__feature--parking"></li>';
-				break;
-			case 'washer':
-				guide = '<li class="popup__feature popup__feature--washer"></li>';
-				break;
-			case 'elevator':
-				guide = '<li class="popup__feature popup__feature--elevator"></li>';
-				break;
-			case 'conditioner':
-				guide = '<li class="popup__feature popup__feature--conditioner"></li>';
-				break;
-			default:
-				console.log('Ошибка по виду features');
-			}
+			let guide = `<li class="popup__feature popup__feature--${features[i]}"></li>`;
 
 			popupFeatures.push(guide);
 		}
