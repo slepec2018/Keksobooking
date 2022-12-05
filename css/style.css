@@ -378,6 +378,10 @@ fieldset {
   border-radius: 4px;
 }
 
+.ad-form__price-wrap{
+  width: calc(100% - 20px);
+}
+
 .ad-form__element input:hover,
 .ad-form__element select:hover,
 .ad-form__element textarea:hover {
