@@ -10,6 +10,11 @@ env:
 
 extends: "htmlacademy/vanilla"
 
+globals:
+  Pristine: readonly
+  noUiSlider: readonly
+  L: readonly
+
 rules:
   no-magic-numbers:
     - error
@@ -18,8 +23,13 @@ rules:
         - -1
         - 0
         - 1
+        - 2
         - 10
         - 100
+        - 200
+        - 1000
+        - 1001
+        - 1002
   indent:
     - error
     - tab

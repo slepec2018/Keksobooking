@@ -1,12 +1,9 @@
-import {generatedAdverts} from './data.js';
-import { fillSimilarCards } from './similar_items.js';
-import { deactivateForm, activateForm } from './switch_forms.js';
+import './forms.js';
+import './map.js';
+import { takeData } from './serv.js';
+import { manageData } from './filters.js';
 
-deactivateForm();
-
-const pointSimilarCards = document.querySelector('.map__canvas');
-pointSimilarCards.append(fillSimilarCards(generatedAdverts()));
-
-activateForm();
+// Запуск формирвоания карточек объявлений с данными с сервера или аварийными моками
+takeData().then(manageData);
 
 

@@ -30,12 +30,12 @@ const OFFERS_COUNT = 10;
 const POINT_DECIMALS = 5;
 const AMOUNT_WORD = 10;
 const LatRange = {
-	MIN: 36.36,
-	MAX: 35.7,
+	MIN: 35.4712,
+	MAX: 35.8712,
 };
 const LngRange = {
-	MIN: 139.7,
-	MAX: 139.8,
+	MIN: 139.4576,
+	MAX: 139.9576,
 };
 const PriceRange = {
 	MIN: 2000,
@@ -49,7 +49,6 @@ const GuestsRange = {
 	MIN: 2,
 	MAX: 20,
 };
-
 const offerType = {
 	palace: {
 		title: 'Дворец',
@@ -72,7 +71,18 @@ const offerType = {
 		min: 3000,
 	},
 };
+const mainIconSize = 52;
+const basicIconSize = 40;
+const mainLatRange = 35.67012;
+const mainLngRange = 139.7576;
+const dotRound = 5;
+const mainMapScale = 14;
+const filterPriceLow = 10000;
+const filterPriceHigh = 50000;
 
+const formInputs = document.querySelectorAll('input');
+
+// Функция создания одного объявления
 const getAdvert = (index) => {
 	const lat = getRandomNumberPoint(LatRange.MIN, LatRange.MAX, POINT_DECIMALS);
 	const lng = getRandomNumberPoint(LngRange.MIN, LngRange.MAX, POINT_DECIMALS);
@@ -96,11 +106,19 @@ const getAdvert = (index) => {
 		},
 		location: {
 			lat,
-			lng,
+			lng: lng,
 		},
 	};
 };
 
+// функция генерирования массива обьявлений
 const generatedAdverts = (length = OFFERS_COUNT) => Array.from({ length }, (_el, i) => getAdvert(i + 1));
 
-export { generatedAdverts, offerType };
+// Функция очистки всех полей формы
+const cleanForm = () => {
+	for (let element of formInputs) {
+		element.value = '';
+	}
+};
+
+export { generatedAdverts, offerType, mainIconSize, basicIconSize, mainLatRange, mainLngRange, dotRound, mainMapScale, filterPriceLow, filterPriceHigh, formInputs, cleanForm };

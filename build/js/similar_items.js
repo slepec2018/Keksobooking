@@ -2,6 +2,7 @@ import { offerType } from './data.js';
 
 const templateSimilarCards = document.querySelector('#card').content.querySelector('.popup');
 
+// Функция наполнениями карточками товаров блока DOM
 const fillSimilarCards = (generatedData) => {
 	let fragment = new DocumentFragment();
 
@@ -16,9 +17,7 @@ const fillSimilarCards = (generatedData) => {
 		clone.querySelector('.popup__title').textContent = title;
 		clone.querySelector('.popup__text--address').textContent = address;
 		clone.querySelector('.popup__text--price').textContent = `${price} ₽/ночь`;
-
 		clone.querySelector('.popup__type').textContent = typeClone;
-
 		clone.querySelector('.popup__text--capacity').textContent = `${rooms} комнаты для ${guests} гостей.`;
 		clone.querySelector('.popup__text--time').textContent = `Заезд после ${checkin}, выезд до ${checkout}.`;
 
@@ -42,22 +41,8 @@ const fillSimilarCards = (generatedData) => {
 
 		clone.querySelector('.popup__avatar').setAttribute('src', avatar);
 
-		if (
-			title === null ||
-			address === null ||
-			checkin === null ||
-			guests === null ||
-			features.length === 0 ||
-			description === null ||
-			photos.length === 0 ||
-			avatar === null
-		) {
-			console.log('Error');
-		} else {
-			fragment.append(clone);
-		}
+		fragment.append(clone);
 	}
-
 
 	return fragment;
 };
