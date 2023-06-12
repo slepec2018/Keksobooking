@@ -1,26 +1,26 @@
 import { showMesConfirm, showMessError } from './messages.js';
 import { generatedAdverts, cleanForm } from './data.js';
 
-// Функция забора данных карточек объявлений с сервера
+// The function of collecting ad card data from the server
 const takeData = () => {
 
 	return fetch('https://27.javascript.pages.academy/keksobooking/data')
 		.then((response) => {
 			if (response.status !== 200) {
 				alert('Looks like there was a problem. Status Code: ' + response.status);
-				// Аварийное заполнение контейнера постами моками
+				// Emergency filling of the container with post mocks
 				return generatedAdverts();
 			}
 			return response.json();
 		})
 		.catch((err) => {
 			alert(err);
-			// Аварийное заполнение контейнера постами моками
+			// Emergency filling of the container with post mocks
 			return generatedAdverts();
 		});
 };
 
-// Функция отправки данных нового объявления загруженного пользователем
+// The function of sending data of a new ad uploaded by the user
 const sendData = (formData) => {
 	fetch('https://27.javascript.pages.academy/keksobooking', {
 		method: 'POST',

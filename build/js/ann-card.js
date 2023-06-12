@@ -28,9 +28,9 @@ const addAnnCard = (data) => {
 	clone.querySelector('.popup__avatar').setAttribute('src', avatar);
 	clone.querySelector('.popup__title').textContent = title;
 	clone.querySelector('.popup__text--address').textContent = address;
-	clone.querySelector('.popup__text--price').textContent = `${price} ₽/ночь`;
+	clone.querySelector('.popup__text--price').textContent = `${price} $/night`;
 	clone.querySelector('.popup__type').textContent = offerType[type].title;
-	clone.querySelector('.popup__text--capacity').textContent = `${rooms} комнаты для ${guests} гостей`;
+	clone.querySelector('.popup__text--capacity').textContent = `${rooms} rooms for ${guests} guests`;
 
 	annCardFeatureTarg.innerHTML = '';
 	if (features) {
@@ -46,7 +46,7 @@ const addAnnCard = (data) => {
 	annCardPhotoTarg.innerHTML = '';
 	if (photos) {
 		for (let item of photos) {
-			annCardPhotoArr.push(`<img src="${item}" class="popup__photo" width="45" height="40" alt="Фотография жилья">`)
+			annCardPhotoArr.push(`<img src="${item}" class="popup__photo" width="45" height="40" alt="Housing photo">`)
 		}
 	}
 

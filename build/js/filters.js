@@ -9,7 +9,7 @@ const filterGuest = mapFilters.querySelector('#housing-guests');
 const filterFeature = mapFilters.querySelector('#housing-features');
 const filterFeatureCheckbox = filterFeature.querySelectorAll('.map__checkbox');
 
-// Функция проверки изминения типа квартиры
+// The function of checking the change of apartment type
 const changeDataFilterType = (data) => {
 
 	if (filterType.value === 'any') {
@@ -23,7 +23,7 @@ const changeDataFilterType = (data) => {
 	})
 };
 
-// Функция проверки изминения цены
+// Price change check function
 const changeDataFilterPrice = (data) => {
 	if (filterPrice.value === 'any') {
 		return data;
@@ -54,7 +54,7 @@ const changeDataFilterPrice = (data) => {
 	}
 };
 
-// Функция проверки изминения количества комнат
+// Function to check the change in the number of rooms
 const changeDataFilterRoom = (data) => {
 	if (filterRoom.value === 'any') {
 		return data;
@@ -67,7 +67,7 @@ const changeDataFilterRoom = (data) => {
 	})
 };
 
-// Функция проверки изминения количества гостей
+// Function to check the change in the number of guests
 const changeDataFilterGuest = (data) => {
 	if (filterGuest.value === 'any') {
 		return data;
@@ -80,7 +80,7 @@ const changeDataFilterGuest = (data) => {
 	})
 };
 
-// Функция получения списка активных чекбоксов
+// Function to get a list of active checkboxes
 const getCheckedCheckBoxes = () => {
 	const checkboxesChecked = [];
 
@@ -93,7 +93,7 @@ const getCheckedCheckBoxes = () => {
 	return checkboxesChecked;
 };
 
-// Функция проверки присутсвия характеристики
+// Function to check the presence of a characteristic
 const featureParse = (item, data) => {
 	return data.filter((element) => {
 		if ((element.offer.features || []).findIndex((it) => it === item) !== -1) {
@@ -102,7 +102,7 @@ const featureParse = (item, data) => {
 	})
 };
 
-// Фунция проверки статуса характеристик
+// Feature Status Check Function
 const changeDataFilterFeature = (data) => {
 	const check = getCheckedCheckBoxes();
 
@@ -118,7 +118,7 @@ const changeDataFilterFeature = (data) => {
 
 	return newData;
 };
-// Функция формирования массива с учетом значения всех фильтров
+// The function of forming an array, taking into account the value of all filters
 const manageData = (data) => {
 
 	mapFilters.addEventListener('change', () => {

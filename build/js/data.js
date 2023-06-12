@@ -8,16 +8,16 @@ import {
 } from './util.js';
 
 const TITLES = [
-	'Сдам 1-комнатную студию хозяин Радужный',
-	'Голосеевский район метро Васильковская ЖК ПаркЛенд ParkLand',
-	'Сдам 3к кв. в доме премиум-класса по ул. Старонаводницкой 6б',
-	'ТОП ДНЯ! Сдам 1-к квартиру ЖК Липинка',
-	'Аренда Стильной 3к-Квартиры в ЖК Бульвар Фонтанов. Саперное Поле Центр',
-	'Сдаю квартиру 2-х комнатную в Киеве, смежные комнаты в Хрущевке',
-	'Аренда дизайн рем 2000$ Царский Дом Крещатик',
-	'Аренда стильной квартиры (150м2) в ЖК Новопечерские Липки',
-	'Аренда 2к квартиры, пер. Лабораторный, ЖК Alter Ego, Печерск',
-	'Сдам 1к Подольский р-н Виноградарь ул Свободы пр-т',
+	'Rent 1-room studio owner Raduzhny',
+	'Goloseevsky district metro station Vasilkovskaya Residential complex ParkLand ParkLand',
+	'Rent 3k sq. in a premium house on the street. Staronavodnitskaya 6b',
+	'TOP OF THE DAY! Rent 1-room apartment ZhK Lipinka',
+	'Rent Stylish 3-room apartment in the residential complex Boulevard Fountains. Sapper Field Center',
+	'I rent a 2-room apartment in Kyiv, adjoining rooms in Khrushchev',
+	'Rent design rem 2000$ Royal House Khreshchatyk',
+	'Rent a stylish apartment (150m2) in Novopecherskie Lipki residential complex',
+	'Rent 2k apartment, per. Laboratory, LCD Alter Ego, Pechersk',
+	'Rent 1k Podolsky district Vynohradar st Svobody avenue',
 ];
 const OFFER_CHECKS = ['12:00', '13:00', '14:00'];
 const OFFER_FEATURES = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
@@ -51,23 +51,23 @@ const GuestsRange = {
 };
 const offerType = {
 	palace: {
-		title: 'Дворец',
+		title: 'Castle',
 		min: 10000,
 	},
 	flat: {
-		title: 'Квартира',
+		title: 'Apartment',
 		min: 1000,
 	},
 	house: {
-		title: 'Дом',
+		title: 'House',
 		min: 5000,
 	},
 	bungalow: {
-		title: 'Бунгало',
+		title: 'Bungalow',
 		min: 0,
 	},
 	hotel: {
-		title: 'Отель',
+		title: 'Hotel',
 		min: 3000,
 	},
 };
@@ -82,7 +82,7 @@ const filterPriceHigh = 50000;
 
 const formInputs = document.querySelectorAll('input');
 
-// Функция создания одного объявления
+// Single ad creation function
 const getAdvert = (index) => {
 	const lat = getRandomNumberPoint(LatRange.MIN, LatRange.MAX, POINT_DECIMALS);
 	const lng = getRandomNumberPoint(LngRange.MIN, LngRange.MAX, POINT_DECIMALS);
@@ -111,14 +111,20 @@ const getAdvert = (index) => {
 	};
 };
 
-// функция генерирования массива обьявлений
+// declaration array generation function
 const generatedAdverts = (length = OFFERS_COUNT) => Array.from({ length }, (_el, i) => getAdvert(i + 1));
 
-// Функция очистки всех полей формы
+// Function to clear all form fields
 const cleanForm = () => {
 	for (let element of formInputs) {
 		element.value = '';
 	}
+	document.querySelector('.ad-form__photo').innerHTML = ''
+	document.querySelector('.ad-form-header__preview img').src = 'img/muffin-grey.svg';
+	document.querySelector('.ad-form__element textarea').value = '';
+
+	document.querySelectorAll('input[type=checkbox]').forEach(el => el.checked = false);
 };
+
 
 export { generatedAdverts, offerType, mainIconSize, basicIconSize, mainLatRange, mainLngRange, dotRound, mainMapScale, filterPriceLow, filterPriceHigh, formInputs, cleanForm };

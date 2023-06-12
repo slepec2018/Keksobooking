@@ -17,10 +17,10 @@ const formPriceSlider = form.querySelector('.ad-form__price-wrap');
 const formRoom = form.querySelector('#room_number');
 const formCapacity = form.querySelector('#capacity');
 
-// Запуск библиотеки Pristine
+// Launching the Pristine Library
 const pristine = new Pristine(form);
 
-// Добавления слайдера на страницу формы поле прайс
+// Adding a slider to the form page price field
 noUiSlider.create(formPriceSlider, {
 	start: [1000],
 	connect: true,
@@ -30,7 +30,7 @@ noUiSlider.create(formPriceSlider, {
 	},
 });
 
-// Дополнительное правило валидации поля Прайс
+// Additional validation rule for the Price field
 pristine.addValidator(formPriceApart, function (value) {
 	if (value < offerType[formTypeApart.value].min) {
 		return false;
@@ -39,16 +39,16 @@ pristine.addValidator(formPriceApart, function (value) {
 	}
 },() => `Значение не может быть меньше ${offerType[formTypeApart.value].min}`, 1001, true);
 
-// Функция вызова дополнительной валидации поля Прайс
+// Function to call additional validation of the Price field
 const changePrice = () => {
 	pristine.validate(formPriceApart);
 }
 
-// Навешивание собятия вызова функции changePrice
+// Hanging the changePrice function call event
 formTypeApart.addEventListener('change', changePrice);
 
-// Функция изминения значения placeholder цены за ночь, минимальное значение валидатора и скрола
-//при изминения типа жилья
+// The function to change the price placeholder value per night, the minimum value of the validator and scroll
+//when changing the type of housing
 const changeMinPrice = () => {
 	formPriceApart.setAttribute('placeholder', offerType[formTypeApart.value].min);
 	formPriceApart.setAttribute('min', offerType[formTypeApart.value].min);
@@ -62,27 +62,27 @@ const changeMinPrice = () => {
 	});
 };
 
-// Навешивание события функции changeMinPrice
+// Hanging the event of the changeMinPrice function
 formTypeApart.addEventListener('change', changeMinPrice);
 
-// Дополнительное правило валидации соотношения количество гостей к комнатам
+// Additional Validation Rule for Number of Guests to Rooms Ratio
 pristine.addValidator(formCapacity, function (value) {
 	if (value > formRoom.value || value === 100) {
 		return false;
 	} else {
 		return true;
 	}
-}, 'Количество гостей не может превышать количество комнат', 1002, false);
+}, 'The number of guests cannot exceed the number of rooms', 1002, false);
 
-// Функция запуска дополнительной валидации соотношения количества гостей к комнатам
+// Function to run an additional validation of the ratio of guests to rooms
 const changeNumberRooms = () => {
 	pristine.validate(formCapacity);
 };
 
-// Навешивание события проверки функции changeNumberRooms
+// Hanging the check event of the changeNumberRooms function
 formRoom.addEventListener('change', changeNumberRooms);
 
-// Функция проверки правильно заполненных обязательных полей
+// Check function for correctly filled required fields
 form.addEventListener('submit', (e) => {
 	const valid = pristine.validate();
 
@@ -95,12 +95,12 @@ form.addEventListener('submit', (e) => {
 	}
 });
 
-// Передача данных бегунка слайдера в поле прайс
+// Passing slider data to the price field
 formPriceSlider.noUiSlider.on('update', function (values, handle) {
 	formPriceApart.value = Math.round(values[handle]);
 });
 
-// Функция отключения форм и фильтров
+// Function to disable forms and filters
 const deactivateForm = () => {
 	for (let element of formFieldsets) {
 		mapFilters.style.visibility = 'hidden';
@@ -108,10 +108,10 @@ const deactivateForm = () => {
 	}
 };
 
-// Событие отключения активности форм до загрузки карты
+// The event of disabling form activity before the map is loaded
 document.addEventListener('DOMContentLoaded', deactivateForm());
 
-// Функция включения форм и фильтров
+// Function to include forms and filters
 const activateForm = () => {
 	for (let element of formFieldsets) {
 		mapFilters.removeAttribute('style');
@@ -119,31 +119,31 @@ const activateForm = () => {
 	}
 };
 
-// Функция изминения значения value поля выезд
+// Function for changing the value of the exit field
 formTimeIn.addEventListener('change', () => {
 	formTimeOut.value = formTimeIn.value;
 });
 
-// Функция изминения значения value поля заезд
+// The function of changing the value of the value field of the race
 formTimeOut.addEventListener('change', () => {
 	formTimeIn.value = formTimeOut.value;
 });
 
-// Событие добавления аватара в форму
+// Event adding an avatar to the form
 formAvatar.addEventListener('change', () => {
 	const [file] = formAvatar.files;
 
 	formAvatarImg.setAttribute('src', `${URL.createObjectURL(file)}`);
 });
 
-// Событие добавления картинок в форму
+// The event of adding images to the form
 formImg.addEventListener('change', (event) => {
 	if (formImgWrap.querySelectorAll('img').length > 2) {
 		event.preventDefault();
 	} else {
 		const [file] = formImg.files;
 
-		formImgWrap.insertAdjacentHTML('afterbegin', `<img src="${URL.createObjectURL(file)}" alt="Вид из окна" width="70px" height="70px">`)
+		formImgWrap.insertAdjacentHTML('afterbegin', `<img src="${URL.createObjectURL(file)}" alt="View from the window" width="70px" height="70px">`)
 	}
 });
 
