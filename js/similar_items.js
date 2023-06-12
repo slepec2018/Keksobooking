@@ -2,7 +2,7 @@ import { offerType } from './data.js';
 
 const templateSimilarCards = document.querySelector('#card').content.querySelector('.popup');
 
-// Функция наполнениями карточками товаров блока DOM
+// The function of filling the DOM block with product cards
 const fillSimilarCards = (generatedData) => {
 	let fragment = new DocumentFragment();
 
@@ -16,10 +16,10 @@ const fillSimilarCards = (generatedData) => {
 
 		clone.querySelector('.popup__title').textContent = title;
 		clone.querySelector('.popup__text--address').textContent = address;
-		clone.querySelector('.popup__text--price').textContent = `${price} ₽/ночь`;
+		clone.querySelector('.popup__text--price').textContent = `${price} $/night`;
 		clone.querySelector('.popup__type').textContent = typeClone;
-		clone.querySelector('.popup__text--capacity').textContent = `${rooms} комнаты для ${guests} гостей.`;
-		clone.querySelector('.popup__text--time').textContent = `Заезд после ${checkin}, выезд до ${checkout}.`;
+		clone.querySelector('.popup__text--capacity').textContent = `${rooms} rooms for ${guests} guests.`;
+		clone.querySelector('.popup__text--time').textContent = `Check-in after ${checkin}, check out before ${checkout}.`;
 
 		for (let i = 0; i < features.length; i++) {
 			let guide = `<li class="popup__feature popup__feature--${features[i]}"></li>`;
@@ -32,7 +32,7 @@ const fillSimilarCards = (generatedData) => {
 		clone.querySelector('.popup__description').textContent = description;
 
 		for (let k = 0; k < photos.length; k++) {
-			const guide = `<img src="${photos[k]}" class="popup__photo" width="45" height="40" alt="Фотография жилья">`;
+			const guide = `<img src="${photos[k]}" class="popup__photo" width="45" height="40" alt="Housing photo">`;
 
 			popupPhotos.push(guide);
 		}

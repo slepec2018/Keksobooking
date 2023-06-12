@@ -21,7 +21,7 @@ const WORDS = [
 	'adjective',
 ];
 
-// Функция возрощающая случайное число из переданного диапозона включительно
+// Function that returns a random number from the passed range inclusive
 const getRandomNumber = (min, max) => {
 	if (min < 0 || max < 0 || min >= max) {
 		return NaN;
@@ -33,7 +33,7 @@ const getRandomNumber = (min, max) => {
 	return Math.floor(Math.random() * (finMax - finMin + 1)) + finMin;
 };
 
-// Функция возращающая случайное число с плавающей точкой из переданного диапозона включительно
+// A function that returns a random floating point number from the given range inclusive
 const getRandomNumberPoint = (min, max, point) => {
 	if (min < 0 || max < 0) {
 		return NaN;
@@ -46,12 +46,12 @@ const getRandomNumberPoint = (min, max, point) => {
 	return Number(int.toFixed(point));
 };
 
-// Функция возрощающая случайную елемент заданного массива
+// A function that returns a random element of a given array
 const getRandomItemArr = (arr) => {
 	return arr[Math.floor(Math.random() * arr.length)];
 };
 
-// Функция возрощающая случайную часть заданного массива
+// A function that returns a random part of a given array
 const getRandomArrayPart = (arr) => {
 	const a = getRandomNumber(0, arr.length - 1);
 	let b = getRandomNumber(0, arr.length - 1);
@@ -66,21 +66,21 @@ const getRandomArrayPart = (arr) => {
 	return arr.slice(lower, upper);
 };
 
-//Функция форматирования текста, первая буква первого слова становится заглавным
+//Text formatting function, the first letter of the first word is capitalized
 const capitalize = (string) => string.charAt(0).toUpperCase() + string.slice(1);
 
-// Функция выбора рандомного слова  из задданого массива
+// The function of choosing a random word from a given array
 const getRandomWord = () => {
 	const word = getRandomItemArr(WORDS);
 	return word;
 };
 
-// Функция создания предложения lorem
+// lorem sentence creation function
 const generateWords = (length) => {
 	return capitalize([...Array(length)].map(getRandomWord).join(' ') + '.');
 };
 
-// Функция форматиорования единичных цифр с добавкой 0 в начале
+// Function for formatting single digits with a leading 0 added
 const getNumberWithLeadZero = (number) => number < 10 ? `0${number}` : number;
 
 export {getRandomNumber, getRandomNumberPoint, getRandomItemArr, getRandomArrayPart, generateWords, getNumberWithLeadZero };

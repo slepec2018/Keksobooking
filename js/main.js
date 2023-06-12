@@ -3,7 +3,7 @@ import './map.js';
 import { takeData } from './serv.js';
 import { manageData } from './filters.js';
 
-// Запуск формирвоания карточек объявлений с данными с сервера или аварийными моками
+// Starting the formation of ad cards with data from the server or emergency mocks
 takeData().then(manageData);
 
 

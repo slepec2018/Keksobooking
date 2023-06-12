@@ -2,15 +2,15 @@ import { activateForm, formCoordinate } from './forms.js';
 import { addAnnCard } from './ann-card.js';
 import {mainIconSize, basicIconSize, mainLatRange, mainLngRange, dotRound, mainMapScale} from './data.js';
 
-// Запуск библиотеки leaflet
+// Launching the leaflet library
 const map = L.map('map-canvas').setView([mainLatRange, mainLngRange], mainMapScale);
 
-// Привязка слоя карты
+// Map Layer Anchor
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 }).addTo(map);
 
-// Создание шаблонов меток на карте
+// Create label templates on the map
 const mainIcon = L.icon({
 	iconUrl: 'img/main-pin.svg',
 	iconSize: [mainIconSize, mainIconSize],
@@ -20,13 +20,13 @@ const basicIcon = L.icon({
 	iconSize: [basicIconSize, basicIconSize],
 });
 
-// Добавление основной метки на карту
+// Adding a main marker to the map
 const mainMarker = L.marker([mainLatRange, mainLngRange], { icon: mainIcon, riseOnHover: true, draggable: true }).addTo(map);
 
-// Добавление слоя меток на карту
+// Adding a label layer to the map
 const markerGroup = L.layerGroup().addTo(map);
 
-// Функция добавления меток на карту похожих обьявлений
+// The function of adding labels to the map of related ads
 const createMap = (dataAd) => {
 	for (const item of dataAd) {
 		const dataBaloon = addAnnCard(item);
