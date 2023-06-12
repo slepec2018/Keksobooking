@@ -4,7 +4,7 @@ import { generatedAdverts, cleanForm } from './data.js';
 // The function of collecting ad card data from the server
 const takeData = () => {
 
-	return fetch('https://27.javascript.pages.academy/keksobooking/data')
+	return fetch('https://raw.githubusercontent.com/slepec2018/Keksobooking/0ffc11169c1321d506d14aa36dad1d09044a0471/data.json')
 		.then((response) => {
 			if (response.status !== 200) {
 				alert('Looks like there was a problem. Status Code: ' + response.status);
